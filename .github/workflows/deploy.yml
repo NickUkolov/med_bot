@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/${{ secrets.SSH_USER }}/my-service-repo
+            cd /home/${{ secrets.SSH_PROJECT_DIR }}/med_bot
             git pull origin main
           
             export TEST=${{ secrets.TEST }}
