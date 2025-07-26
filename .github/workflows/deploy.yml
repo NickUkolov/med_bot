@@ -1,0 +1,33 @@
+name: Deploy to Server via SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: SSH into Server and Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/${{ secrets.SSH_USER }}/my-service-repo
+            git pull origin main
+          
+            export TEST=${{ secrets.TEST }}
+          
+            docker compose down
+          
+            docker images --filter "dangling=true" -q | xargs -r docker rmi
+          
+            docker compose up -d --build
