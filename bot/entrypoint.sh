@@ -1,2 +1,2 @@
 #!/bin/bash
-exec uvicorn --host=0.0.0.0 --port=8080 --log-level debug test_zalupa:app
+exec python aiogram_run.py
