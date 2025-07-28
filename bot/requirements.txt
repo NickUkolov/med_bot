@@ -1,4 +1,5 @@
 aiogram~=3.21.0
 pydantic-settings~=2.10.1
 aioredis
+redis
 aiogram-dialog
