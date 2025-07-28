@@ -25,7 +25,9 @@ jobs:
             cd /home/${{ secrets.SSH_PROJECT_DIR }}/med_bot
             git pull origin main
           
-            export TEST=${{ secrets.TEST }}
+            export TG__TOKEN=${{ secrets.TG__TOKEN }}
+            export PG__URL=${{ secrets.PG__URL }}
+            export REDIS__URL=${{ secrets.REDIS__URL }}
           
             docker compose down
           

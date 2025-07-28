@@ -10,8 +10,8 @@ services:
       - "8080:8080"
     environment:
       - TG__TOKEN=${TG__TOKEN}
-      - PG__URL=${TG__URL}
-      - REDIS__URL=${TG__URL}
+      - PG__URL=${PG__URL}
+      - REDIS__URL=${REDIS__URL}
 
   redis:
     image: redis:latest
