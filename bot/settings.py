@@ -13,7 +13,6 @@ class Redis(BaseModel):
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_nested_delimiter='__')
 
-    admin: int
     tg: Tg
     pg: Pg
     redis: Redis
